@@ -61,6 +61,7 @@ Clone or download the repository, do not fork it.
 
 ### Task 1
 Create a new type, ReportingStructure, that has two properties: employee and numberOfReports.
+**ASSUMPTION - The employee property is of type Employee.**
 
 For the field "numberOfReports", this should equal the total number of reports under a given employee. The number of 
 reports is determined to be the number of directReports for an employee and all of their direct reports. For example, 
@@ -75,8 +76,33 @@ given the following employee structure:
 The numberOfReports for employee John Lennon (employeeId: 16a596ae-edd3-4847-99fe-c4518e82c86f) would be equal to 4. 
 
 This new type should have a new REST endpoint created for it. This new endpoint should accept an employeeId and return 
-the fully filled out ReportingStructure for the specified employeeId. The values should be computed on the fly and will 
+the fully filled out ReportingStructure for the specified employeeId. **ASSUMPTION - A fully filled out reporting structure should include the direct reports property of the Employee object.** The values should be computed on the fly and will 
 not be persisted.
+
+**ASSUMPTION - The Employee services, repositories, and controllers should be changed as little as possible.**
+
+The following endpoints are available to use:
+```
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/api/reportingStructure/{id}
+    * RESPONSE: ReportingStructure
+```
+The ReportingStructure has a JSON schema of:
+```json
+{
+  "type":"ReportingStructure",
+  "properties": {
+    "employee": {
+      "type": "Employee"
+    },
+    "numberOfReports": {
+      "type": "number"
+    }
+  }
+}
+```
+For all endpoints that require an "id" in the URL, this is the "employeeId" field.
 
 ### Task 2
 Create a new type, Compensation. A Compensation has the following fields: employee, salary, and effectiveDate. Create 

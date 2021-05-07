@@ -49,5 +49,29 @@
     "lastName": "Harrison",
     "position": "Developer III",
     "department": "Engineering"
+  },
+  {
+    "employeeId": "bc13c438-9420-464e-ad93-6352e296683b",
+    "firstName": "Senior",
+    "lastName": "Smith",
+    "position": "Time Traveler",
+    "department": "Time Engineering",
+    "directReports": [
+      {
+        "employeeId": "2ba83dd3-9200-4904-a955-3fd16741747a"
+      }
+    ]
+  },
+  {
+    "employeeId": "2ba83dd3-9200-4904-a955-3fd16741747a",
+    "firstName": "Junior",
+    "lastName": "Smith",
+    "position": "Time Traveler",
+    "department": "Time Engineering",
+    "directReports": [
+      {
+        "employeeId": "bc13c438-9420-464e-ad93-6352e296683b"
+      }
+    ]
   }
 ]
