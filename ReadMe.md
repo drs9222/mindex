@@ -109,5 +109,46 @@ Create a new type, Compensation. A Compensation has the following fields: employ
 two new Compensation REST endpoints. One to create and one to read by employeeId. These should persist and query the 
 Compensation from the persistence layer.
 
+
+The following endpoints are available to use:
+```
+* CREATE
+    * HTTP Method: POST 
+    * URL: localhost:8080/api/compensation
+    * PAYLOAD: Compensation
+    * RESPONSE: Compensation
+* READ
+    * HTTP Method: GET 
+    * URL: localhost:8080/api/compensation/{id}
+    * RESPONSE: Compensation array
+```
+The Compensation has a JSON schema of:
+```json
+{
+  "type":"Compensation",
+  "properties": {
+    "employee": {
+      "type": "string"
+    },
+    "salary": {
+      "type": "number"
+    },
+    "effectiveDate": {
+      "type": "date"
+    }
+  }
+}
+```
+For all endpoints that require an "id" in the URL, this is the "employeeId" field.
+
+**ASSUMPTIONS**
+- The employee property is the employee id since it would be awkward to populate an employee object when setting the employee's compensation.
+- The salary property should be a non-negative decimal number.
+- The presence of the effective date property implies that an employee's compensation changes over time and each change should be recorded.
+- The effective date can be in the past (I limit to 1900 for no good reason) or the future.
+- A employee id/effective date combo should be unique to avoid having multiple "active" compensations.
+- The new read endpoint should return the complete compensation history for the employee.
+
+
 ## Delivery
 Please upload your results to a publicly accessible Git repo. Free ones are provided by Github and Bitbucket.
